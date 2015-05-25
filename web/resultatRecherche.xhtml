@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -10,15 +11,14 @@
         <h2>Résultat Requête</h2>
         <h:panelGrid columns="2">
             <h:outputText value="Ville de départ : "/>
-            <h:outputText value="#{requestBean.departure}" />
+            <h:inputText value="#{requestBean.departure}" />
             <h:outputText value="Destination : "/>
-            <h:outputText value="#{requestBean.destination}" />
+            <h:inputText value="#{requestBean.destination}" />
             <h:outputText value="Date de départ : "/>
-            <h:outputText value="#{requestBean.dateDepart}" >
-                <f:convertDateTime pattern="MM/dd/yyyy" />
-            </h:outputText>
+            <p:calendar id="dateDepart" value="#{requestBean.dateDepart}" navigator="true"/>
             <h:outputText value="Date de retour"/>
-            <h:outputText value="#{requestBean.dateRetour}"/>
+            <p:calendar id="dateDepart" value="#{requestBean.dateRetour}" navigator="true"/>
+            <h:commandButton id="resultatRecherche" value="Rechercher" action="resultatRecherche" />
         </h:panelGrid>
     </h:body>
 </html>

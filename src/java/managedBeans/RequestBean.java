@@ -5,7 +5,6 @@
  */
 package managedBeans;
 
-import java.time.LocalDate;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,7 +21,7 @@ public class RequestBean {
     private String departure;
     private String destination;
     private Date dateDepart;
-    private String dateRetour;
+    private Date dateRetour;
     /**
      * Creates a new instance of RequestBean
      */
@@ -53,11 +52,11 @@ public class RequestBean {
         this.dateDepart = dateDepart;
     }
 
-    public String getDateRetour() {
+    public Date getDateRetour() {
         return dateRetour;
     }
 
-    public void setDateRetour(String dateRetour) {
+    public void setDateRetour(Date dateRetour) {
         this.dateRetour = dateRetour;
     }
     

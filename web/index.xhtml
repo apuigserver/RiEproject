@@ -14,14 +14,10 @@
         Formulaire recherche voyage : 
         <br />
         <h:form>
-            <h:outputLabel value="Ville de départ :"/>
-            <h:inputText id="departure" label="Departure" required="true" value="#{requestBean.departure}" />
-            <h:outputLabel value="Destination :"/>
-            <h:inputText id="destination" label="Destination" required="true" value="#{requestBean.destination}" />
-            <h:outputLabel value="Date de départ :"/>
-            <p:calendar id="birthDate" value="#{requestBean.dateDepart}" showOn="button" navigator="true"/>
-            <h:outputLabel value="Date de retour :"/>
-            <h:inputText id="dateRetour" label="Date de retour" required="true" value="#{requestBean.dateRetour}" />
+            <h:inputText id="departure" title="Ville de départ" required="true" value="#{requestBean.departure}" />
+            <h:inputText id="destination" label="Destination" value="#{requestBean.destination}" />
+            <p:calendar id="dateDepart" value="#{requestBean.dateDepart}" navigator="true"/>
+            <p:calendar id="dateRetour" value="#{requestBean.dateRetour}" navigator="true"/>
             <h:commandButton id="resultatRecherche" value="Rechercher" action="resultatRecherche" />
         </h:form>
     </h:body>
