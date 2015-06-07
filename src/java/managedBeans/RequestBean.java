@@ -5,9 +5,20 @@
  */
 package managedBeans;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.ejb.AfterBegin;
+import javax.ejb.AfterCompletion;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
+import models.Hotel;
+import models.Vol;
+import services.HotelService;
+import services.VolService;
 
 /**
  *
@@ -15,19 +26,38 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class RequestBean {
-
-    
+public final class RequestBean {
+    // Champs Requette
     private String departure;
     private String destination;
     private Date dateDepart;
     private Date dateRetour;
+    //Resultat Vols
+    private List<Vol> vols;
+    private Vol vol;
+    // Résultat Hotels
+    private Hotel hotel;
+    private List<Hotel> hotels;
+    
+    @ManagedProperty("#{volService}")
+    private VolService serviceVol = new VolService();
+    
+    @ManagedProperty("#{hotelService}")
+    private HotelService serviceHotel;
+    
+    public void resultatRecherche(ActionEvent actionEvent) {
+    vols = serviceVol.init(departure, destination);
+    hotels = serviceHotel.init(destination);
+    }
+    
     /**
      * Creates a new instance of RequestBean
      */
     public RequestBean() {
-    }
-
+        vols = serviceVol.init(departure, destination);
+        hotels = new ArrayList<>();
+    }    
+    
     public String getDeparture() {
         return departure;
     }
@@ -59,5 +89,45 @@ public class RequestBean {
     public void setDateRetour(Date dateRetour) {
         this.dateRetour = dateRetour;
     }
-    
+
+    public List<Vol> getVols() {
+        return vols;
+    }
+
+    public void setVols(List<Vol> vols) {
+        this.vols = vols;
+    }
+
+    public void setServiceVol(VolService service) {
+        this.serviceVol = service;
+    }
+
+    public Vol getVol() {
+        return vol;
+    }
+
+    public void setVol(Vol vol) {
+        this.vol = vol;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public List<Hotel> getHotels() {
+        return hotels;
+    }
+
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
+    }
+
+    public void setServiceHotel(HotelService serviceHotel) {
+        this.serviceHotel = serviceHotel;
+    }
+ 
 }

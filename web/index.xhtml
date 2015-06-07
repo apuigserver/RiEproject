@@ -2,23 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Romantic Escapades</title>
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
     </h:head>
     <h:body>
-        <!--<ui:composition template="/template/layout.xhtml">
-            
-        </ui:composition>-->
         Formulaire recherche voyage : 
         <br />
         <h:form>
-            <h:inputText id="departure" title="Ville de départ" required="true" value="#{requestBean.departure}" />
-            <h:inputText id="destination" label="Destination" value="#{requestBean.destination}" />
-            <p:calendar id="dateDepart" value="#{requestBean.dateDepart}" navigator="true"/>
-            <p:calendar id="dateRetour" value="#{requestBean.dateRetour}" navigator="true"/>
-            <h:commandButton id="resultatRecherche" value="Rechercher" action="resultatRecherche" />
+            <p:inputText id="departure" placeholder="Ville de départ" required="true" value="#{requestBean.departure}" />
+            <p:inputText id="destination" placeholder="Destination" value="#{requestBean.destination}" />
+            <p:calendar id="dateDepart" placeholder="Date de départ" value="#{requestBean.dateDepart}" navigator="true" pattern="dd/MM/yyyy"/>
+            <p:calendar id="dateRetour" placeholder="Date de Retour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
+            <h:commandButton value="Recherche" action="resultatRecherche" actionListener="#{requestBean.resultatRecherche}" />
         </h:form>
     </h:body>
 </html>
