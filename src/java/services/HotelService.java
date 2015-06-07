@@ -27,9 +27,9 @@ public class HotelService {
     }
     
     public List<Hotel> init(String destination) {
-        hotels = new ArrayList<Hotel>();
-        int i = 1;
-        for(i = 1; i <= 50; i++) {
+        hotels = new ArrayList<>();
+        int i;
+        for(i = 0; i <= 50; i++) {
         hotels.add(new Hotel(i, "Hotel "+ destination + ' ' + i));
         }
         return hotels;

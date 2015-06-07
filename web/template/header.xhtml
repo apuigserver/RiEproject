@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Template Header</title>
+        <link href="../resources/css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <div style="background-color: #AFAFAF;">
+                <h:outputLink id="AccueilRiE" value="/RiE/faces/index.xhtml" class="link">
+                    <h:graphicImage url="../resources/images/logo_RiE_enTete.png"/>
+                </h:outputLink>
+               
+            <p:link class="link" outcome="contact" value="Contact" />
+            <h:outputLabel value="Langue"/>
+            <img src="../resources/images/icon_drapeau_francais.gif" alt=""/>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>
+

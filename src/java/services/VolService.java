@@ -26,10 +26,10 @@ public class VolService {
 
     public List<Vol> init(String departure, String destination) {
         vols = new ArrayList<>();
-        int i = 1;
-        for(i = 1; i <= 50; i++) {
-        vols.add(new Vol(i, "Vol "+ departure + '-' + destination + ' ' + i, 100+i));
-        }
+        int i;
+        for(i = 0; i <= 50; i++) {
+        vols.add(new Vol(i, "Vol "+ departure + '-' + destination + " " + i, 100+i));
+        } 
         return vols;
     }
     
