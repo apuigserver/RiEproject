@@ -20,6 +20,9 @@
             <p:calendar id="dateRetour" placeholder="Date de Retour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
             <h:commandButton value="Recherche" action="resultatRecherche" actionListener="#{requestBean.resultatRecherche}" />
         </h:form>
+        <ui:insert name="footer">
+            <ui:include class="footer" src="/template/footer.xhtml"/>
+        </ui:insert>
     </h:body>
 </html>
 

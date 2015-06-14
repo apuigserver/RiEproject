@@ -21,6 +21,9 @@
             <h:outputText value="#{reserveBean.hotel.id}" />
             <h:outputText value="#{reserveBean.hotel.nom}" />
         </h:panelGrid>
+        <ui:insert name="footer">
+            <ui:include class="footer" src="/template/footer.xhtml"/>
+        </ui:insert>
     </h:body>
 </html>
 
