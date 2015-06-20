@@ -14,6 +14,8 @@ public class Vol {
     private int id;
     private String nom;
     private int prix;
+    private Itineraire itineraireAller;
+    private Itineraire itineraireRetour;
 
     public Vol() {
     }
@@ -47,5 +49,21 @@ public class Vol {
     public void setPrix(int prix) {
         this.prix = prix;
     }
-  
+
+    public Itineraire getItineraireAller() {
+        return itineraireAller;
+    }
+
+    public void setItineraireAller(Itineraire itineraireAller) {
+        this.itineraireAller = itineraireAller;
+    }
+
+    public Itineraire getItineraireRetour() {
+        return itineraireRetour;
+    }
+
+    public void setItineraireRetour(Itineraire itineraireRetour) {
+        this.itineraireRetour = itineraireRetour;
+    }
+    
 }

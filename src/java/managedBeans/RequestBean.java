@@ -8,9 +8,6 @@ package managedBeans;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.ejb.AfterBegin;
-import javax.ejb.AfterCompletion;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -46,7 +43,7 @@ public final class RequestBean {
     private HotelService serviceHotel;
     
     public void resultatRecherche(ActionEvent actionEvent) {
-    vols = serviceVol.init(departure, destination);
+    vols = serviceVol.init(departure, destination, dateDepart, dateRetour);
     hotels = serviceHotel.init(destination);
     }
     
@@ -54,7 +51,7 @@ public final class RequestBean {
      * Creates a new instance of RequestBean
      */
     public RequestBean() {
-        vols = serviceVol.init(departure, destination);
+        vols = new ArrayList<>();
         hotels = new ArrayList<>();
     }    
     

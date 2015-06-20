@@ -8,6 +8,10 @@
     <h:head>
         <title>Romantic Escapes - Resultat requette</title>
         <link href="../resources/css/style.css" rel="stylesheet" type="text/css"/>
+        <style>
+            tr:nth-child(even) {background: #CCC}
+            tr:nth-child(odd) {background: #FFF}
+        </style>
     </h:head>
     <h:body>       
         <ui:insert name="header">
@@ -21,24 +25,53 @@
             <h:outputText value="Destination : "/>
             <p:inputText value="#{requestBean.destination}" />
             <h:outputText value="Date de départ : "/>
-            <p:calendar id="dateDepart" value="#{requestBean.dateDepart}" navigator="true" />
+            <p:calendar id="dateDepart" value="#{requestBean.dateDepart}" navigator="true" pattern="dd/MM/yyyy"/>
             <h:outputText value="Date de retour"/>
-            <p:calendar id="dateRetour" value="#{requestBean.dateRetour}" navigator="true" />
+            <p:calendar id="dateRetour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
         </h:panelGrid>
         
-        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-            <p:outputLabel for="listeVol" value="Choisissez votre vol" />
-            <p:outputLabel for="listeHotel" value="Choisissez votre hotel" />
+        <h:panelGrid columns="2" style="margin-bottom:10px; width:100%;" cellpadding="5" columnClasses="label, value">
+            <p:outputLabel for="listeVol" value="Choisissez votre vol" style="width: 50%"/>
+            <p:outputLabel for="listeHotel" value="Choisissez votre hotel" style="width: 50%"/>
 
-            <p:selectOneListbox id="listeVol" value="#{reserveBean.vol}" converter="volConverter" filterMatchMode="contains" var="v">
+            <p:selectOneListbox class="box" id="listeVol" value="#{reserveBean.vol}" converter="volConverter" filterMatchMode="contains" var="v" style="width: 100%;">
                 <f:selectItems value="#{requestBean.vols}" var="vol" itemLabel="#{vol.nom}" itemValue="#{vol}"/>
                 <p:column>
-                    <h:outputText value="#{v.nom}" />
+                    <h:outputLabel value="Aller : #{v.itineraireAller.date}" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireAller.compagnie}" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireAller.heureDepart}" />
+                    <h:outputText value="#{v.itineraireAller.heureArrive}" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireAller.aeroportDepart} #{v.itineraireAller.aeroportArrive}" />
+                </p:column>
+                <p:column>
+                    <h:outputLabel value="Retour : #{v.itineraireRetour.date}"/>
+                    <br></br>
+                    <h:outputText value="#{v.itineraireRetour.compagnie}" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireRetour.heureDepart}" />
+                    <h:outputText value="#{v.itineraireRetour.heureArrive}" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireRetour.aeroportDepart}" />
+                    <h:outputText value="#{v.itineraireRetour.aeroportArrive}" />
+                </p:column>
+                <p:column>
+                    <h:outputLabel value="Prix par passager"/>
+                    <br></br>
+                    <h:outputLabel value="#{v.prix} €"/>
                 </p:column>
             </p:selectOneListbox>
             
-            <p:selectOneListbox id="listeHotel" value="#{reserveBean.hotel}" converter="hotelConverter" filterMatchMode="contains" var="h">
+            <p:selectOneListbox id="listeHotel" value="#{reserveBean.hotel}" converter="hotelConverter" filterMatchMode="contains" var="h" style="width: 100%">
                 <f:selectItems value="#{requestBean.hotels}" var="hotel" itemLabel="#{hotel.nom}" itemValue="#{hotel}" />
+                <p:column>
+                    <h:outputText value="#{h.nom}" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{h.nom}" />
+                </p:column>
                 <p:column>
                     <h:outputText value="#{h.nom}" />
                 </p:column>
