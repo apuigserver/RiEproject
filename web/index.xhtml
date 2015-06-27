@@ -12,14 +12,44 @@
         <ui:insert name="header">
             <ui:include class="entete" src="/template/header.xhtml"/>
         </ui:insert>
-        <h2>Formulaire recherche voyage : </h2>
-        <h:form>
+        <div id="RechercheVoyage">
+            <h:graphicImage url="../resources/images/shutterstock_124610029.jpg"/>
+        <h2 style="margin-top: -500px; margin-left: 10%;">Formulaire recherche voyage : </h2>
+        <h:form style="margin-left: 10%; margin-bottom: 420px;">
             <p:inputText id="departure" placeholder="Ville de départ" required="true" value="#{requestBean.departure}" />
             <p:inputText id="destination" placeholder="Destination" value="#{requestBean.destination}" />
             <p:calendar id="dateDepart" placeholder="Date de départ" value="#{requestBean.dateDepart}" navigator="true" pattern="dd/MM/yyyy"/>
             <p:calendar id="dateRetour" placeholder="Date de Retour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
             <h:commandButton value="Recherche" action="resultatRecherche" actionListener="#{requestBean.resultatRecherche}" />
         </h:form>
+        </div>
+        <div id="AProposDeNous">
+            <h2>A propos de nous</h2>
+            <p>PLUS SIMPLE</p><p>PLUS RAPIDE</p><p>ENTIEREMENT GRATUIT</p>
+            <p>surprenez vous ainsi que votre conjoint le temps d'un week-end à petits prix à l'étranger !</p>
+            <p>Romantic Escapades a été créé par des amoureux du voyage.</p>
+            <p>L'essence même du concept est de permettre à chacun de surprendre son partenaire en lui offrant la possibilité de créer son week-end aux meilleurs prix.</p>
+            <p>Le site est entièrement gratuit, nous vous mettons directement en relations avec les compagnies aériennes ainsi que les hotels. Nous ne prenons pas de marge sur vos tarif afin que vous soyez toujours gagnant.</p>
+            <img src="resources/images/logo-rose-seule-noire.png" alt=""/>
+            <hr/>
+        </div>
+        <div id="Envol">
+            <h:graphicImage url="../resources/images/shutterstock_157519403.jpg"/>
+            <h2 style="margin-top: -300px; margin-left: 10%; margin-bottom: 300px">N'HESITEZ PLUS, ENVOLEZ-VOUS !</h2>
+        </div>
+        <div id="Info">
+            <h2>Trouvez toutes les informations ici</h2>
+            <img src="resources/images/shutterstock_95509471--converti-.png"/>
+            <p>Il vous arrive de ne pas savoir quoi faire de votre week-end ?</p>
+            <p>Romantic Escapades met à votre disposition tous les outils sur une seule page afin de faciliter votre départ en wekk-end.</p>
+            <img src="resources/images/logo-rose-seule-noire.png" alt=""/>
+            <hr/>
+        </div>
+        <div id="UnBreak">
+            <img src="resources/images/shutterstock_149592968.jpg" alt=""/>
+            <h2 style="margin-top: -500px; margin-left: 10%;">UN BREAK RIEN QUE POUR VOUS DEUX !</h2>
+            <p style=" margin-bottom: 430px;">"La mesure de l'amour c'est d'aimer sans mesure." St Augustin</p>
+        </div>
         <ui:insert name="footer">
             <ui:include class="footer" src="/template/footer.xhtml"/>
         </ui:insert>
