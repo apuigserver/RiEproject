@@ -5,7 +5,6 @@
  */
 package models;
 
-import java.util.Date;
 
 /**
  *
@@ -17,17 +16,30 @@ public class Itineraire {
     private String aeroportDepart;
     private String aeroportArrive;
     private String compagnie;
+    private String imageCompanie;
     private String heureDepart;
     private String heureArrive;
+    private long duration;
 
-    public Itineraire(Date date, String aeroportDepart, String aeroportArrive, String compagnie, String heureDepart, String heureArrive) {
-        int dayDate = date.getDate();
-        int monthDate = date.getMonth();
-        int yearDate = date.getYear();
-        this.date = Integer.toString(dayDate) +"/" + Integer.toString(monthDate) + "/" +Integer.toString(yearDate);
+    public Itineraire(){
+        
+    }
+    
+    public Itineraire(String date, String aeroportDepart, String aeroportArrive, String compagnie, String heureDepart, String heureArrive) {
+        this.date = date;
         this.aeroportDepart = aeroportDepart;
         this.aeroportArrive = aeroportArrive;
         this.compagnie = compagnie;
+        this.heureDepart = heureDepart;
+        this.heureArrive = heureArrive;
+    }
+    
+    public Itineraire(String date, String aeroportDepart, String aeroportArrive, String compagnie, String imageCompanie, String heureDepart, String heureArrive) {
+        this.date = date;
+        this.aeroportDepart = aeroportDepart;
+        this.aeroportArrive = aeroportArrive;
+        this.compagnie = compagnie;
+        this.imageCompanie = imageCompanie;
         this.heureDepart = heureDepart;
         this.heureArrive = heureArrive;
     }
@@ -78,6 +90,22 @@ public class Itineraire {
 
     public void setHeureArrive(String heureArrive) {
         this.heureArrive = heureArrive;
+    }
+
+    public String getImageCompanie() {
+        return imageCompanie;
+    }
+
+    public void setImageCompanie(String imageCompanie) {
+        this.imageCompanie = imageCompanie;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
     
 }

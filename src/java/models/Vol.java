@@ -5,6 +5,8 @@
  */
 package models;
 
+import models.Itineraire;
+
 /**
  *
  * @author arnaudpuigserver
@@ -13,14 +15,14 @@ public class Vol {
     
     private int id;
     private String nom;
-    private int prix;
+    private String prix;
     private Itineraire itineraireAller;
     private Itineraire itineraireRetour;
 
     public Vol() {
     }
 
-    public Vol(int id, String nom, int prix) {
+    public Vol(int id, String nom, String prix) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
@@ -42,11 +44,11 @@ public class Vol {
         this.nom = nom;
     }
 
-    public int getPrix() {
+    public String getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(String prix) {
         this.prix = prix;
     }
 

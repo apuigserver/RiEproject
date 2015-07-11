@@ -5,6 +5,8 @@
  */
 package managedBeans;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 import models.Hotel;
 import models.Vol;
+import models.VolRequestPost;
+import org.json.simple.parser.ParseException;
 import services.HotelService;
 import services.VolService;
 
@@ -29,12 +33,14 @@ public final class RequestBean {
     private String destination;
     private Date dateDepart;
     private Date dateRetour;
+    private VolRequestPost requestPost;
     //Resultat Vols
     private List<Vol> vols;
     private Vol vol;
-    // Résultat Hotels
+// Résultat Hotels
     private Hotel hotel;
     private List<Hotel> hotels;
+    
     
     @ManagedProperty("#{volService}")
     private VolService serviceVol = new VolService();
@@ -42,9 +48,10 @@ public final class RequestBean {
     @ManagedProperty("#{hotelService}")
     private HotelService serviceHotel;
     
-    public void resultatRecherche(ActionEvent actionEvent) {
-    vols = serviceVol.init(departure, destination, dateDepart, dateRetour);
-    hotels = serviceHotel.init(destination);
+    public void resultatRecherche(ActionEvent actionEvent) throws IOException, FileNotFoundException, ParseException {
+        requestPost = new VolRequestPost(departure, destination, dateDepart.toString(), dateDepart.toString());
+        vols = serviceVol.init(requestPost.getOriginplace(), requestPost.getDestinationplace(), requestPost.getOutbounddate(), requestPost.getInbounddate());
+        hotels = serviceHotel.init(destination);
     }
     
     /**
@@ -125,6 +132,14 @@ public final class RequestBean {
 
     public void setServiceHotel(HotelService serviceHotel) {
         this.serviceHotel = serviceHotel;
+    }
+
+    public VolRequestPost getRequestPost() {
+        return requestPost;
+    }
+
+    public void setRequestPost(VolRequestPost requestPost) {
+        this.requestPost = requestPost;
     }
  
 }
