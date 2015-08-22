@@ -11,58 +11,81 @@
         <style>
             tr:nth-child(even) {background: #CCC}
             tr:nth-child(odd) {background: #FFF}
+            body {background-image: url(resources/images/shutterstock_124610029.jpg)}
         </style>
     </h:head>
     <h:body>       
         <ui:insert name="header">
             <ui:include src="/template/header.xhtml"/>
         </ui:insert>
-        <h2>Résultat Requête</h2>
+        <h2 style="color : white;">Vos critères de recherche :</h2>
         <h:form>
-        <h:panelGrid columns="2">
-            <h:outputText value="Ville de départ : "/>
+            <h:outputText style="color : white;" value="Ville de départ : "/>
             <p:inputText value="#{requestBean.departure}" />
-            <h:outputText value="Destination : "/>
+            <h:outputText style="color : white;" value="Destination : "/>
             <p:inputText value="#{requestBean.destination}" />
-            <h:outputText value="Date de départ : "/>
+            <h:outputText style="color : white;" value="Date de départ : "/>
             <p:calendar id="dateDepart" value="#{requestBean.dateDepart}" navigator="true" pattern="dd/MM/yyyy"/>
-            <h:outputText value="Date de retour"/>
+            <h:outputText style="color : white;" value="Date de retour"/>
             <p:calendar id="dateRetour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
-        </h:panelGrid>
         
-        <h:panelGrid columns="2" style="margin-bottom:10px; width:100%;" cellpadding="5" columnClasses="label, value">
-            <p:outputLabel for="listeVol" value="Choisissez votre vol" style="width: 50%"/>
-            <p:outputLabel for="listeHotel" value="Choisissez votre hotel" style="width: 50%"/>
-
-            <p:selectOneListbox class="box" id="listeVol" value="#{reserveBean.vol}" converter="volConverter" filterMatchMode="contains" var="v" style="width: 100%;">
+            
+            <h2 style="color : white;">Choisissez votre vol parmis #{requestBean.nbVols}</h2>
+            <p:selectOneListbox id="listeVol" value="#{reserveBean.vol}" converter="volConverter" var="v" style="width: 100%; text-align: center;">
                 <f:selectItems value="#{requestBean.vols}" var="vol" itemLabel="#{vol.nom}" itemValue="#{vol}"/>
                 <p:column>
-                    <h:outputLabel value="Aller : #{v.itineraireAller.date}" />
+                    <h:outputLabel style="font-weight: bold" value="Informations vol" />
+                    <br></br>
+                    <h:outputText style="font-weight: bold" value="Aller " />
+                    <br></br>
+                    <h:outputText style="font-weight: bold" value="Retour"/>
+                </p:column>
+                <p:column>
+                    <h:outputLabel style="font-weight: bold" value="Compagnie aérienne" />
                     <br></br>
                     <h:outputText value="#{v.itineraireAller.compagnie}" />
                     <br></br>
-                    <h:outputText value="#{v.itineraireAller.heureDepart}" />
-                    <h:outputText value="#{v.itineraireAller.heureArrive}" />
-                    <br></br>
-                    <h:outputText value="#{v.itineraireAller.aeroportDepart} #{v.itineraireAller.aeroportArrive}" />
+                    <h:outputText  value="#{v.itineraireRetour.compagnie}"/>
                 </p:column>
                 <p:column>
-                    <h:outputLabel value="Retour : #{v.itineraireRetour.date}"/>
+                    <h:outputLabel style="font-weight: bold" value="Départ " />
+                    <h:outputText style="font-size: small" value="(aéroport - heure)" />
                     <br></br>
-                    <h:outputText value="#{v.itineraireRetour.compagnie}" />
+                    <h:outputText value="#{v.itineraireAller.aeroportDepart} - #{v.itineraireAller.heureDepart}" />
                     <br></br>
-                    <h:outputText value="#{v.itineraireRetour.heureDepart}" />
-                    <h:outputText value="#{v.itineraireRetour.heureArrive}" />
-                    <br></br>
-                    <h:outputText value="#{v.itineraireRetour.aeroportDepart}" />
-                    <h:outputText value="#{v.itineraireRetour.aeroportArrive}" />
+                    <h:outputText  value="#{v.itineraireRetour.aeroportDepart} - #{v.itineraireRetour.heureDepart}"/>
                 </p:column>
                 <p:column>
-                    <h:outputLabel value="Prix pour 2 passagers"/>
+                    <h:outputLabel style="font-weight: bold" value="Arrivée " />
+                    <h:outputText style="font-size: small" value="(aéroport - heure)" />
                     <br></br>
-                    <h:outputLabel value="#{v.prix} €"/>
+                    <h:outputText value="#{v.itineraireAller.aeroportArrive} - #{v.itineraireAller.heureArrive}" />
+                    <br></br>
+                    <h:outputText  value="#{v.itineraireRetour.aeroportArrive} - #{v.itineraireRetour.heureArrive}"/>
+                </p:column>
+                <p:column>
+                    <h:outputLabel style="font-weight: bold" value="Durée du vol" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireAller.duration}" />
+                    <br></br>
+                    <h:outputText  value="#{v.itineraireRetour.duration} minutes"/>
+                </p:column>
+                <p:column>
+                    <h:outputLabel style="font-weight: bold" value="Nombre d'escales" />
+                    <br></br>
+                    <h:outputText value="#{v.itineraireAller.nbEscale}" />
+                    <br></br>
+                    <h:outputText  value="#{v.itineraireRetour.nbEscale}"/>
+                </p:column>
+                <p:column>
+                    <h:outputLabel style="font-weight: bold" value="Prix total" />
+                    <br></br>
+                    <br></br>
+                    <h:outputText style="font-weight: bold; font-size: 1.5em;" value="#{v.prix} €" />
                 </p:column>
             </p:selectOneListbox>
+            
+            <h2 style="color : white;">Choisissez votre hotel parmis #{requestBean.nbHotels}</h2>
             
             <p:selectOneListbox id="listeHotel" value="#{reserveBean.hotel}" converter="hotelConverter" filterMatchMode="contains" var="h" style="width: 100%">
                 <f:selectItems value="#{requestBean.hotels}" var="hotel" itemLabel="#{hotel.nom}" itemValue="#{hotel}" />
@@ -76,8 +99,9 @@
                     <h:outputText value="#{h.nom}" />
                 </p:column>
             </p:selectOneListbox>
-            <h:commandButton id="reservationVoyage" value="Réservation" action="reservationVoyage" />
-        </h:panelGrid>    
+            
+            <h:commandButton id="reservationVoyage" value="Réservation" action="reservationVoyage"/>
+ 
         </h:form>
         <ui:insert name="footer">
             <ui:include class="footer" src="/template/footer.xhtml"/>

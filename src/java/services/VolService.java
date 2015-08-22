@@ -76,19 +76,24 @@ public class VolService {
         Place aeroportArrive = places.get(leg.getDestinationStation());
         itineraire.setAeroportArrive(aeroportArrive.getName());
         // Durée du voyage
-        itineraire.setDuration(leg.getDuration());
+        String dureeVol = calculHeureMinutes(leg.getDuration());
+        itineraire.setDuration(dureeVol);
         // Date
         String[] dateAndTime = leg.getDeparture().split("T");
         itineraire.setDate(dateAndTime[0]);
         // Heure Départ
-        itineraire.setHeureDepart(dateAndTime[1]);
+        itineraire.setHeureDepart(dateAndTime[1].substring(0, 5));
         // Heure Arrivé
         dateAndTime = leg.getArrival().split("T");
-        itineraire.setHeureArrive(dateAndTime[1]);
+        itineraire.setHeureArrive(dateAndTime[1].substring(0, 5));
         // Companie : Nom + imageUrl
         Carrier companie = carriers.get(leg.getCarriers()[0]);
         itineraire.setCompagnie(companie.getName());
         itineraire.setImageCompanie(companie.getImageUrl());
+        // Type de vol : Direct ou Avec Escale
+        int nbEscale = leg.getSegmentId().length -1;
+        itineraire.setNbEscale(String.valueOf(nbEscale));
+       
         
         return itineraire;
     }
@@ -111,6 +116,19 @@ public class VolService {
 
     public void setVols(List<Vol> vols) {
         this.vols = vols;
+    }
+
+    private String calculHeureMinutes(long duration) {
+        int heure= 0;
+        while (duration > 60) {
+            heure++;
+            duration -= 60;
+        }
+        if(heure > 1){
+            return heure + " heures " + duration + " minutes"; 
+        } else {
+            return heure + " heure " + duration + " minutes"; 
+        }
     }
     
 }

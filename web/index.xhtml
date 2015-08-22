@@ -3,53 +3,121 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Romantic Escapades</title>
         <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
     </h:head>
-    <h:body>
+    <h:body style="background-color: #E1E1E1">
         <ui:insert name="header">
             <ui:include class="entete" src="/template/header.xhtml"/>
         </ui:insert>
-        <div id="RechercheVoyage">
+        <center>
+        <div class="RechercheVoyage">
             <h:graphicImage url="../resources/images/shutterstock_124610029.jpg"/>
-        <h2 style="margin-top: -500px; margin-left: 10%;">Formulaire recherche voyage : </h2>
-        <h:form style="margin-left: 10%; margin-bottom: 420px;">
-            <p:inputText id="departure" placeholder="Ville de départ" required="true" value="#{requestBean.departure}" />
-            <p:inputText id="destination" placeholder="Destination" value="#{requestBean.destination}" />
-            <p:calendar id="dateDepart" placeholder="Date de départ" value="#{requestBean.dateDepart}" navigator="true" pattern="dd/MM/yyyy"/>
-            <p:calendar id="dateRetour" placeholder="Date de Retour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
-            <h:commandButton value="Recherche" action="resultatRecherche" actionListener="#{requestBean.resultatRecherche}" />
-        </h:form>
+            <h2 style="margin-top: -600px; font-size: 3em;">Créez votre week-end en amoureux<br></br>aux meilleurs prix !</h2>
+            <p style="margin-top: -20px;">Le 1er site fait pour partir plus souvent à moindre frais.</p>
+            <h:panelGrid columns="1">
+                <p:commandButton value="Mode d'emploi" type="button" onclick="PF('dlg2').show();" /> 
+            </h:panelGrid>
+            
+            
+            <p:dialog header="Mode d'emploi" widgetVar="dlg2" modal="true">
+                <p:panelGrid style="font-weight: normal; text-align: left;">
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column>ETAPE 1</p:column>
+                            <p:column>ETAPE 2</p:column>
+                            <p:column>ETAPE 3</p:column>
+                        </p:row>
+                    </f:facet>
+                    <p:row>
+                        <p:column>
+                            <h:outputLabel>Je renseigne les critères de recherche.</h:outputLabel>
+                            <ol>
+                                <li>Ma ville ou mon aéroport de départ</li>
+                                <li>La ville ou l'aéroport de destination</li>
+                                <li>Mes dates de voyages</li>
+                            </ol>
+                        </p:column>
+                        <p:column>Je sélectionne mon vol et mon hotel<br></br>puis je clique sur "je réserve".</p:column>
+                        <p:column>J'ai acces aux liens de réservation<br></br>vers nos sites partenaires.</p:column>
+                    </p:row>
+                    
+                </p:panelGrid>
+                <br></br>
+                <p:panelGrid style="font-weight: normal; text-align: left;">
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column colspan="2">
+                                <h:outputLabel>Informations générales</h:outputLabel>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column><h:outputLabel>Nombre de passager</h:outputLabel></p:column>
+                            <p:column><h:outputLabel>Critère de recherche des vols</h:outputLabel></p:column>
+                        </p:row>
+                    </f:facet>
+                    <p:row>
+                        <p:column><h:outputLabel>2 adultes par défaut.<br></br>Modification possible à l'étape 2.</h:outputLabel></p:column>
+                        <p:column>
+                            <ul>
+                                <li>Pour les départs : soir ou matin</li>
+                                <li>Pour les retours : après midi ou soir</li>
+                            </ul>
+                        </p:column>
+                    </p:row>
+                    
+                </p:panelGrid>
+            </p:dialog>   
+            
+            
+            <h:form>
+                <p:inputText id="departure" placeholder="Ville de départ" required="true" value="#{requestBean.departure}" />
+                <p:inputText id="destination" placeholder="Destination" value="#{requestBean.destination}" />
+                <p:calendar id="dateDepart" placeholder="Date de départ" value="#{requestBean.dateDepart}" navigator="true" pattern="dd/MM/yyyy"/>
+                <p:calendar id="dateRetour" placeholder="Date de Retour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
+                <h:commandButton value="Recherche" action="resultatRecherche" actionListener="#{requestBean.resultatRecherche}" />
+            </h:form>
         </div>
-        <div id="AProposDeNous">
+        <div class="AProposDeNous">
+            <hr style="width: 650px; margin-bottom: -20px; margin-top: 15px;"/>
             <h2>A propos de nous</h2>
-            <p>PLUS SIMPLE</p><p>PLUS RAPIDE</p><p>ENTIEREMENT GRATUIT</p>
-            <p>surprenez vous ainsi que votre conjoint le temps d'un week-end à petits prix à l'étranger !</p>
-            <p>Romantic Escapades a été créé par des amoureux du voyage.</p>
-            <p>L'essence même du concept est de permettre à chacun de surprendre son partenaire en lui offrant la possibilité de créer son week-end aux meilleurs prix.</p>
-            <p>Le site est entièrement gratuit, nous vous mettons directement en relations avec les compagnies aériennes ainsi que les hotels. Nous ne prenons pas de marge sur vos tarif afin que vous soyez toujours gagnant.</p>
-            <img src="resources/images/logo-rose-seule-noire.png" alt=""/>
-            <hr/>
+            
+            <table>
+                <tr>
+                    <td>PLUS SIMPLE</td>
+                    <td>PLUS RAPIDE</td>
+                    <td>ENTIEREMENT GRATUIT !</td>
+                </tr>
+            </table>
+            
+            <p>Surprenez vous ainsi que votre conjoint le temps d'un week-end à petits prix à l'étranger !</p>
+            <p><strong>Romantic Escapades</strong> a été créé par des amoureux du voyage.<br></br>L'essence même du concept est de permettre à chacun de surprendre son partenaire en lui offrant la possibilité<br></br>de créer son week-end aux meilleurs prix.</p>
+            <p>Le site est <strong>entièrement gratuit</strong>, nous vous mettons directement en relations avec les compagnies aériennes ainsi que les hotels.<br></br>Nous <strong>ne prenons pas de marge</strong> sur vos tarif afin que <strong>vous soyez toujours gagnant</strong>.</p>
+            <img src="resources/images/logo-rose-seule-noire-2.png" alt=""/>
+            <hr style="width: 650px;"/>
         </div>
-        <div id="Envol">
+        <div class="Envol">
             <h:graphicImage url="../resources/images/shutterstock_157519403.jpg"/>
-            <h2 style="margin-top: -300px; margin-left: 10%; margin-bottom: 300px">N'HESITEZ PLUS, ENVOLEZ-VOUS !</h2>
+            <h2>N'HESITEZ PLUS, ENVOLEZ-VOUS !</h2>
+            <div style="margin-bottom: 130px; margin-left: 100px; margin-top: -270px; text-align: left;"><h:graphicImage url="../resources/images/initiales-blanches-2.png"/></div>
         </div>
-        <div id="Info">
+        <div class="AProposDeNous" id="Info">
+            <hr style="width: 650px;"/>
             <h2>Trouvez toutes les informations ici</h2>
-            <img src="resources/images/shutterstock_95509471--converti-.png"/>
-            <p>Il vous arrive de ne pas savoir quoi faire de votre week-end ?</p>
-            <p>Romantic Escapades met à votre disposition tous les outils sur une seule page afin de faciliter votre départ en wekk-end.</p>
-            <img src="resources/images/logo-rose-seule-noire.png" alt=""/>
-            <hr/>
+            <img src="resources/images/shutterstock_95509471-converti-2.png"/>
+            <p>Il vous arrive de ne pas savoir quoi faire de votre week-end ?<br></br>Romantic Escapades met à votre disposition tous les outils sur une seule page afin de faciliter<br></br>votre départ en week-end.</p>
+            <img src="resources/images/logo-rose-seule-noire-2.png" alt=""/>
+            <hr style="width: 650px;"/>
         </div>
-        <div id="UnBreak">
+        <div class="UnBreak">
             <img src="resources/images/shutterstock_149592968.jpg" alt=""/>
-            <h2 style="margin-top: -500px; margin-left: 10%;">UN BREAK RIEN QUE POUR VOUS DEUX !</h2>
-            <p style=" margin-bottom: 430px;">"La mesure de l'amour c'est d'aimer sans mesure." St Augustin</p>
+            <h2 style="margin-top: -640px;font-size: 2.5em;">UN BREAK RIEN QUE POUR<br></br>VOUS DEUX !</h2>
+            <p style=" margin-top: 150px;margin-bottom: 430px; font-size: 1.5em;">"La mesure de l'amour c'est d'aimer sans mesure."<br></br>St Augustin</p>
         </div>
+            </center>
         <ui:insert name="footer">
             <ui:include class="footer" src="/template/footer.xhtml"/>
         </ui:insert>

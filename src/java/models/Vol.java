@@ -5,8 +5,6 @@
  */
 package models;
 
-import models.Itineraire;
-
 /**
  *
  * @author arnaudpuigserver

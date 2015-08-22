@@ -3,3 +3,54 @@
     text-decoration-line: none;
     padding-right: 20px;
 }
+
+#ui-selectlistbox-listcontainer{
+    height: 450px;
+}
+
+.AProposDeNous{
+    border: 4px solid #D20005;
+    background-color: white;
+    color: #7F7F7F;
+    margin: auto;
+    width: 1300px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.AProposDeNous h2 {
+    font-size: 2em;
+}
+
+.AProposDeNous td {
+    padding: 15px 100px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.AProposDeNous p {
+    font-size: 1.2em;
+}
+
+.RechercheVoyage form {
+    margin-bottom: 420px;
+}
+
+.Envol h2 {
+    margin-top: -300px;
+    margin-bottom: 280px;
+    text-align: left;
+    padding-left: 100px;
+    font-size: 3em;
+    color: white;
+}
+
+.UnBreak {
+    color: white;
+}
+
+.RechercheVoyage {
+    color: white;
+    text-shadow: #000000 0.5px 0.5px, #000000 -0.5px 0.5px, #000000 -0.5px -0.5px, #000000 0.5px -0.5px;
+}

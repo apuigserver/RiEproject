@@ -19,7 +19,8 @@ public class Itineraire {
     private String imageCompanie;
     private String heureDepart;
     private String heureArrive;
-    private long duration;
+    private String duration;
+    private String nbEscale;
 
     public Itineraire(){
         
@@ -100,12 +101,20 @@ public class Itineraire {
         this.imageCompanie = imageCompanie;
     }
 
-    public long getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(long duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getNbEscale() {
+        return nbEscale;
+    }
+
+    public void setNbEscale(String nbEscale) {
+        this.nbEscale = nbEscale;
     }
     
 }

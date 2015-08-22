@@ -36,11 +36,12 @@ public final class RequestBean {
     private VolRequestPost requestPost;
     //Resultat Vols
     private List<Vol> vols;
+    private int nbVols;
     private Vol vol;
 // Résultat Hotels
     private Hotel hotel;
     private List<Hotel> hotels;
-    
+    private int nbHotels;
     
     @ManagedProperty("#{volService}")
     private VolService serviceVol = new VolService();
@@ -51,7 +52,9 @@ public final class RequestBean {
     public void resultatRecherche(ActionEvent actionEvent) throws IOException, FileNotFoundException, ParseException {
         requestPost = new VolRequestPost(departure, destination, dateDepart.toString(), dateDepart.toString());
         vols = serviceVol.init(requestPost.getOriginplace(), requestPost.getDestinationplace(), requestPost.getOutbounddate(), requestPost.getInbounddate());
+        nbVols = vols.size();
         hotels = serviceHotel.init(destination);
+        nbHotels = hotels.size();
     }
     
     /**
@@ -140,6 +143,22 @@ public final class RequestBean {
 
     public void setRequestPost(VolRequestPost requestPost) {
         this.requestPost = requestPost;
+    }
+
+    public int getNbVols() {
+        return nbVols;
+    }
+
+    public void setNbVols(int nbVols) {
+        this.nbVols = nbVols;
+    }
+
+    public int getNbHotels() {
+        return nbHotels;
+    }
+
+    public void setNbHotels(int nbHotels) {
+        this.nbHotels = nbHotels;
     }
  
 }
