@@ -30,6 +30,10 @@ import org.json.simple.JSONObject;
  */
 public class VolParser {
     
+    public String jsonParserStatut(JSONObject jsonObject){
+        return (String) jsonObject.get("Status");
+    }
+    
     public VolReponseSearch jsonParserReponseVol(JSONObject jSONObject){
         VolReponseSearch volReponseSearch = new VolReponseSearch();
         // AJout de l'attribut Itineraries

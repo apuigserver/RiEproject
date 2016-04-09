@@ -5,48 +5,42 @@
  */
 package models;
 
+import java.util.List;
+
 /**
  *
  * @author arnaudpuigserver
  */
 public class Vol {
     
-    private int id;
-    private String nom;
-    private String prix;
+    private String id;
+    private Prix prix;
     private Itineraire itineraireAller;
     private Itineraire itineraireRetour;
-
+    private List<Reservation> reservations;
+    private String tempsSurPlace;
+    
     public Vol() {
     }
 
-    public Vol(int id, String nom, String prix) {
+    public Vol(String id, Prix prix) {
         this.id = id;
-        this.nom = nom;
         this.prix = prix;
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrix() {
+    public Prix getPrix() {
         return prix;
     }
 
-    public void setPrix(String prix) {
+    public void setPrix(Prix prix) {
         this.prix = prix;
     }
 
@@ -64,6 +58,22 @@ public class Vol {
 
     public void setItineraireRetour(Itineraire itineraireRetour) {
         this.itineraireRetour = itineraireRetour;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public String getTempsSurPlace() {
+        return tempsSurPlace;
+    }
+
+    public void setTempsSurPlace(String tempsSurPlace) {
+        this.tempsSurPlace = tempsSurPlace;
     }
     
 }

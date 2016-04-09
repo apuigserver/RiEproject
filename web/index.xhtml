@@ -72,7 +72,6 @@
                 </p:panelGrid>
             </p:dialog>   
             
-            
             <h:form>
                 <p:inputText id="departure" placeholder="Ville de départ" required="true" value="#{requestBean.departure}" />
                 <p:inputText id="destination" placeholder="Destination" value="#{requestBean.destination}" />
@@ -80,6 +79,8 @@
                 <p:calendar id="dateRetour" placeholder="Date de Retour" value="#{requestBean.dateRetour}" navigator="true" pattern="dd/MM/yyyy"/>
                 <h:commandButton value="Recherche" action="resultatRecherche" actionListener="#{requestBean.resultatRecherche}" />
             </h:form>
+            
+           
         </div>
         <div class="AProposDeNous">
             <hr style="width: 650px; margin-bottom: -20px; margin-top: 15px;"/>

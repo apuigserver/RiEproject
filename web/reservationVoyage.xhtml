@@ -3,64 +3,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Romantic Escapade</title>
         <link href="../resources/css/style.css" rel="stylesheet" type="text/css"/>
+        <style>
+            body {background-color: #595959}
+        </style>
     </h:head>
     <h:body>
         <ui:insert name="header">
             <ui:include src="/template/header.xhtml"/>
         </ui:insert>
-        <h2>Page de réservation du VOYAGE</h2>
-        <h:panelGrid columns="3">
-            <h:outputLabel value="Vol choisi : "/>
-            <h:outputText value="#{reserveBean.vol.id}" />
-            <h:outputText value="#{reserveBean.vol.prix} €" />
-        
-            <h:outputText value="Hotel choisi : "/>
-            <h:outputText value="#{reserveBean.hotel.id}" />
-            <h:outputText value="#{reserveBean.hotel.nom}" />
-        </h:panelGrid>
-        
-        <h3>Detail Vol</h3>
-        <p:panelGrid style="margin-top:20px">
-            <p:row>
-                <p:column colspan="3">Aller : #{reserveBean.vol.itineraireAller.date}</p:column>
-                <p:column colspan="3">Retour : #{reserveBean.vol.itineraireRetour.date}</p:column>
-                <p:column colspan="3">Prix total</p:column>
-            </p:row>
- 
-            <p:row>
-                <p:column colspan="3"><h:graphicImage url="#{reserveBean.vol.itineraireAller.imageCompanie}"/> #{reserveBean.vol.itineraireAller.compagnie}</p:column>
- 
-                <p:column colspan="3"><h:graphicImage url="#{reserveBean.vol.itineraireRetour.imageCompanie}"/> #{reserveBean.vol.itineraireRetour.compagnie}</p:column>
- 
-                <p:column rowspan="3">#{reserveBean.vol.prix} €</p:column>
-            </p:row>
- 
-            <p:row>
-                <p:column>#{reserveBean.vol.itineraireAller.aeroportDepart}</p:column>
-                <p:column><h:graphicImage url="../resources/images/transfertVol.jpg"/></p:column>
-                <p:column>#{reserveBean.vol.itineraireAller.aeroportArrive}</p:column>
-                
-                <p:column>#{reserveBean.vol.itineraireRetour.aeroportDepart}</p:column>
-                <p:column><h:graphicImage url="../resources/images/transfertVol.jpg"/></p:column>
-                <p:column>#{reserveBean.vol.itineraireRetour.aeroportArrive}</p:column>
-            </p:row>
- 
-            <p:row>
-                <p:column>#{reserveBean.vol.itineraireAller.heureDepart}</p:column>
-                <p:column>#{reserveBean.vol.itineraireAller.duration} minutes</p:column>
-                <p:column>#{reserveBean.vol.itineraireAller.heureArrive}</p:column>
-                
-                <p:column>#{reserveBean.vol.itineraireRetour.heureDepart}</p:column>
-                <p:column>#{reserveBean.vol.itineraireRetour.duration} minutes</p:column>
-                <p:column>#{reserveBean.vol.itineraireRetour.heureArrive}</p:column>
-            </p:row>
-         </p:panelGrid>
-        
+        <h2 style="color : white;">Page de réservation du VOYAGE</h2>
+        <p:fieldset id="votreVol" legend="Votre vol" style="background: none;">
+            <p:outputPanel id="dropedVols">
+                <h:outputLabel  class="MoyenneTaille TextBlanc" value="sélectionnez et déposez votre vol ici" rendered="#{empty requestBean.volSelected}"/>
+                <p:dataList rendered="#{not empty requestBean.volSelected}" var="vol" value="#{requestBean.volSelected}">
+                    <ui:insert name="detailVolSelected">
+                        <ui:include class="detailVolSelected" src="/template/detailVolReservation.xhtml" />
+                    </ui:insert>
+                </p:dataList>
+            </p:outputPanel>
+        </p:fieldset>
+
+        <p:fieldset id="votreHotel" legend="Votre hotel" style="background: none;">
+            <p:outputPanel id="dropedHotels">
+                <h:outputText  value="sélectionnez et déposez votre hotel ici" rendered="#{empty requestBean.hotelSelected}" />
+                <p:dataList rendered="#{not empty requestBean.hotelSelected}" var="hotel" value="#{requestBean.hotelSelected}">
+                    <ui:insert name="detailHotelSelected" >
+                        <ui:include class="detailVolSelected" src="/template/detailHotelReservation.xhtml" />
+                    </ui:insert>
+                </p:dataList>
+            </p:outputPanel>
+        </p:fieldset>
+
         <ui:insert name="footer">
             <ui:include class="footer" src="/template/footer.xhtml"/>
         </ui:insert>

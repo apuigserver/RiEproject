@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Romantic Escapades</title>
+    </h:head>
+    <h:body>
+        <ui:composition id="detailHotelColonne">
+            <p:panelGrid style="border: none">
+                <p:row>
+                    <p:column>
+                        <h:graphicImage url="../resources/images/rmt.jpg" height="128"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        #{hotel.nom}
+                        <h:graphicImage url="../resources/images/1etoile.png" alt="1 étoile" rendered="#{hotel.noteEtoile == 1}"/>
+                        <h:graphicImage url="../resources/images/2etoiles.png" alt="2 étoiles" rendered="#{hotel.noteEtoile == 2}"/>
+                        <h:graphicImage url="../resources/images/3etoiles.png" alt="3 étoiles" rendered="#{hotel.noteEtoile == 3}"/>
+                        <h:graphicImage url="../resources/images/4etoiles.png" alt="4 étoiles" rendered="#{hotel.noteEtoile == 4}"/>
+                        <h:graphicImage url="../resources/images/5etoiles.png" alt="5 étoiles" rendered="#{hotel.noteEtoile == 5}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:graphicImage url="../resources/images/07-map-marker-icon.png" alt="" height="24"/>
+                        Situé à #{hotel.distance}Km du centre de #{requestBean.destination}.
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:graphicImage url="../resources/images/dialog.png" alt="" height="24"/>
+                        #{hotel.popularite}
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="3"><hr/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column class="TextGrisFonce MoyenneTaille">Services :</p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:graphicImage url="../resources/images/signal-64x64.png" height="32" alt="Wi-Fi" rendered="#{hotel.wifiService == true}"/>
+                        <h:outputLabel style="margin-left: 10px; margin-right: 10px;" rendered="#{hotel.wifiService == true}">Wi-fi</h:outputLabel>
+                        <h:graphicImage url="../resources/images/parking1.png" height="32" alt="Parking" rendered="#{hotel.parkingService == true}"/>
+                        <h:outputLabel style="margin-left: 10px; margin-right: 10px;" rendered="#{hotel.parkingService == true}">Parking</h:outputLabel>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="3"><hr/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column class="TextRouge MoyenneTaille">Prix par nuit :</p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputLabel class="TextRouge GrandeTaille">#{hotel.prix.partieEntiere}</h:outputLabel>
+                        <h:outputLabel class="TextRouge PetiteTaille">.#{hotel.prix.partieDecimal}</h:outputLabel>
+                        <h:outputLabel class="TextRouge GrandeTaille"> €</h:outputLabel>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>        
+        </ui:composition>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Romantic Escapades</title>
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition id="detailVol">
+            <p:panelGrid style="border: none; float: left;">
+                <p:row>
+                    <p:column colspan="3" style="font-weight: bold; border-right: 2px solid #A6A6A6;">
+                        <h:outputLabel class="TextRouge MoyenneTaille">ALLER : </h:outputLabel>
+                        <h:outputLabel class="TextGrisFonce MoyenneTaille ">#{vol.itineraireAller.date}</h:outputLabel>
+                    </p:column>
+                    <p:column colspan="3" class="Bold" style="border-right: 2px solid #A6A6A6;">
+                        <h:outputLabel class="TextRouge MoyenneTaille">RETOUR : </h:outputLabel>
+                        <h:outputLabel class="TextGrisFonce MoyenneTaille">#{vol.itineraireRetour.date}</h:outputLabel>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="3" style="border-right: 2px solid #A6A6A6;">
+                        <h:outputLabel class="TextGrisFonce PetiteTaille">Compagnie : </h:outputLabel>
+                        <h:outputLabel class="TextGrisFonce MoyenneTaille">#{vol.itineraireAller.compagnie}</h:outputLabel>
+                    </p:column>
+
+                    <p:column colspan="3" style="border-right: 2px solid #A6A6A6;">
+                        <h:outputLabel class="TextGrisFonce PetiteTaille">Compagnie : </h:outputLabel>
+                        <h:outputLabel class="TextGrisFonce MoyenneTaille">#{vol.itineraireRetour.compagnie}</h:outputLabel>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>#{vol.itineraireAller.aeroportDepart}</p:column>
+                    <p:column><h:graphicImage url="../resources/images/transfertVol.jpg"/></p:column>
+                    <p:column style="border-right: 2px solid #A6A6A6;">#{vol.itineraireAller.aeroportArrive}</p:column>
+
+                    <p:column>#{vol.itineraireRetour.aeroportDepart}</p:column>
+                    <p:column><h:graphicImage url="../resources/images/transfertVol.jpg"/></p:column>
+                    <p:column style="border-right: 2px solid #A6A6A6;">#{vol.itineraireRetour.aeroportArrive}</p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>#{vol.itineraireAller.heureDepart}</p:column>
+                    <p:column class="TextGrisClair">#{vol.itineraireAller.duration}</p:column>
+                    <p:column style="border-right: 2px solid #A6A6A6;">#{vol.itineraireAller.heureArrive}</p:column>
+
+                    <p:column>#{vol.itineraireRetour.heureDepart}</p:column>
+                    <p:column class="TextGrisClair">#{vol.itineraireRetour.duration}</p:column>
+                    <p:column style="border-right: 2px solid #A6A6A6;">#{vol.itineraireRetour.heureArrive}</p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="6"><hr style="color: #A6A6A6;"/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="3">Temps sur place : </p:column>
+                    <p:column colspan="3" class="TextNoir PetiteTaille">#{vol.tempsSurPlace}</p:column>
+                </p:row>
+
+            </p:panelGrid>
+
+            <p:dataTable var="reservation" value="#{vol.reservations}" style="min-height: 200px">
+                <p:column headerText="Vendeur">
+                    <h:outputText value="#{reservation.nameAgent}" />
+                </p:column>
+
+                <p:column headerText="Prix">
+                    <a value="#{reservation.prix} €" href="#{reservation.lien}">#{reservation.prix} €</a>
+                </p:column>
+            </p:dataTable>
+        </ui:composition>
+
+    </h:body>
+</html>
+

@@ -1,11 +1,39 @@
+.ui-datalist-data {
+   list-style-type: none;
+}
+
+.ui-datatable table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 54%;
+}
+
+.ui-panel .ui-panel-content {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    padding: 0.5em 0.5em;
+}
+
+.ui-fieldset, .ui-fieldset {
+    padding: 0.4em 0.3em;
+}
+
+.ui-widget-content {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+.ui-widget-header{
+    color : #FFFFFF;
+    background: #8B0000 -moz-linear-gradient(center top , rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)) repeat scroll 0 0;
+    border: 1px solid #a8a8a8;
+}
+
 .link{
     color: white;
     text-decoration-line: none;
     padding-right: 20px;
-}
-
-#ui-selectlistbox-listcontainer{
-    height: 450px;
 }
 
 .AProposDeNous{
@@ -53,4 +81,45 @@
 .RechercheVoyage {
     color: white;
     text-shadow: #000000 0.5px 0.5px, #000000 -0.5px 0.5px, #000000 -0.5px -0.5px, #000000 0.5px -0.5px;
+}
+
+.TextRouge {
+    color : #8B0000;
+    text-align: center;
+}
+
+.TextGrisFonce {
+    color : #595959;
+    text-align: center;
+}
+
+.TextGrisClair {
+    color : #A6A6A6;
+    text-align: center;
+}
+
+.TextBlanc {
+    color : #FFFFFF;
+    text-align: center;
+}
+
+.TextNoir {
+    color : #000000;
+    text-align: center;
+}
+
+.GrandeTaille{
+    font-size: 2em;
+}
+
+.MoyenneTaille{
+    font-size: 1.3em;
+}
+
+.PetiteTaille{
+    font-size: 1em;
+}
+
+.Bold {
+    font-weight: bold;
 }
