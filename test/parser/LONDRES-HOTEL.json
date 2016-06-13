@@ -135,7 +135,7 @@
         {"id":4,"name":"Non-fumeur","key":"NONSMOKINGSERVICE"},
         {"id":21,"name":"Bar","key":"BAR"},
         {"id":49,"name":"Service de navette","key":"SHUTTLESERVICE"},
-        {"id":60,"name":"Salles de mariage","key":"WEDDINGFACILITY"},
+        {"id":60,"name":"Salles de marriage","key":"WEDDINGFACILITY"},
         {"id":56,"name":"Baignoire","key":"BATHTUB"},
         {"id":50,"name":"Cuisine","key":"KITCHEN"},
         {"id":22,"name":"Équipements pour personnes handicapées","key":"DISABLEDFACILITY"},
